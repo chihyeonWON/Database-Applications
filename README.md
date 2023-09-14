@@ -61,8 +61,35 @@ NULL+숫자 연산(AVG, SUM)의 결과는 무조건 NULL
 
 NULL값처리
 
+IFNULL(속성,속성이 NULL일때 값) 함수
+```
+## 행 번호 출력
+```
+MySQL 변수는 이름 앞에 @ 기호를 붙임
+변수 치환 SET과 := 기호를 사용함
 
+SET @seq:=0; seq변수에 0대입
+0 + 1 @seq:=@seq+1 <- 첫번째값 1
+1 + 1 @seq+1 <- 2
+where @seq < 2 <-seq 초기값이 2 미만인 것 
+```
+## 서브쿼리(Subquery) 부속질의
+```
+하나의 sql 문 안에 다른 sql 문이 중첩
+select, insert, update, delete 문이나 다른 하위 쿼리 내부에 중첩
 
+다른 테이블에서 가져온 데이터를 이용
+현재 테이블에 있는 정보를 검색/가공
 
+데이터가 대량일 때
+데이터를 모두 합쳐서 연산하는 조인보다 필요한 데이터만 찾아서 공급해주는 부속질의가 성능 우수
 
+주질의(외부질의)main query
+부속질의(내부질의)sub query
+
+부속질의를 먼저 계산
+
+select 절에 부속질의 < 두 테이블에서 같은 속성 하나를 가져올 때 스칼라 부속질의 Scalar Subquery
+from 절에 부속질의 < inline view
+where 절에 부속질의  nested subquery
 ```
