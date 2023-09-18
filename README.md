@@ -93,3 +93,69 @@ select 절에 부속질의 < 두 테이블에서 같은 속성 하나를 가져�
 from 절에 부속질의 < inline view
 where 절에 부속질의  nested subquery
 ```
+## 단일행 부속질의(Single Row Subquery)
+```
+Single Row Subquery : 하나의 컬럼으로 구성된 조회 결과
+```
+## Multiple Row Subquery
+```
+where 뒤에 여러 개의 컬럼을 구성
+
+IN, ANY, ALL, EXISTS 연산자로 얻음
+여러 개의 행을 outer 쿼리에 반환
+where 또는 Having ~ IN 연산자 사이
+```
+## 상관 부속질의 Correlated Subquery
+```
+중첩 서브쿼리의 한 종류
+주질의의 속성을 내부질의 사용
+
+서로 관련성이 있는 테이블의 속성
+```
+## Uncorrelated Subquery
+```
+주질의의 테이블과 부속질의의 테이블이 다름
+
+각 테이블에 대해서 한 번 평가되는 쿼리
+```
+## 스칼라 부속질의 - Select 부속질의
+```
+부속질의의 결과 값을 단일 행, 단일 열의 스칼라 값으로 반환
+주질의와 부속질의의 관계는 상관/비상관 모두 가능
+테이블이 같아도되고 달라도 됨
+```
+## 인라인 뷰 - FROM 부속질의
+```
+FROM 절에 사용되는 부속질의
+부속질의의 결과는 테이블 <- 가상의 테이블(질의가 끝나면 없어짐)
+
+상관 부속질의로 사용될 수는 없음
+(이유는 가상의 테이블인 뷰 형태로 제공되기 때문)
+```
+## 중첩질의 - WHERE 부속질의
+![image](https://github.com/wonchihyeon/Database-Applications/assets/58906858/4085086e-2d57-4139-97fe-4ee061d57aba)
+```
+부속질의의 결과가 반드시 단일 행, 단일 열 반환
+아닐 경우 질의를 처리할 수 없음
+비교 연산자
+
+WHERE 절에서 사용되는 부속질의
+WHERE 절은 보통 데이터를 선택하는 조건 혹은 술어와 같이 사용됨
+중첩질의를 술어 부속질의라고도 함
+
+IN 연산자
+
+NOT IN 연산자
+
+EXISTS (특정 속성 값이 앞에 안나옴)
+IN 은 특정 속성 값이 앞에 나옴
+
+A IN (WHERE~)
+EXISTS (WHERE~)
+```
+## 뷰 VIEW
+```
+
+```
+
+
