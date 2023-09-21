@@ -197,3 +197,11 @@ create or replace view 뷰이름 as select ()
 ```mysql
 drop view 뷰이름 
 ```
+## 인덱스
+[인덱스 정리](https://jojoldu.tistory.com/243)
+```
+InnoDB <- mysql이나 mariaDB에서 데이터베이스를 관리하는 저장 엔진
+.frm 파일 < - 데이터베이스 스키마 구조 저장
+.myd 파일 <- log파일, 복구파일
+.myi 파일 <- index 정보
+```
