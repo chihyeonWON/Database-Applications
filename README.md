@@ -154,8 +154,46 @@ A IN (WHERE~)
 EXISTS (WHERE~)
 ```
 ## 뷰 VIEW
+[뷰 문법정리](https://m.blog.naver.com/regenesis90/222228928522)
 ```
+뷰의 생성, 삭제, 수정
 
+Table
+View
+Object
+Procedure
+Function
+
+TableA, TableB <- query질의를 해서 결과를 View로 보여준다.
+
+뷰<- 하나 이상의 테이블(Defining Table)로 만든 가상테이블(Virtual Table)
+
+뷰를 통해서는 수정할 수 없다.<- 가끔 수정하는 기능을 구현할 수 있다. dyana set
+뷰는 읽기만 가능, 데이터 저장소가 필요없다.
+쿼리는 select 형태
+
+장점 : 사용자가 요구하는 정보만 가공하여 뷰로 생성 가능 ->편리성
+자주 사용되는 질의를 뷰로 미리 정의-> 재사용성
+필요한 데이터만 선별하여 보여줄 수 있음 -> 보안성
+원본 테이블의 구조가 변해도 응용에는 영향을 주지 않도록 하는 논리적 독립성 제공 -> 독립성
+
+원본테이블의 변경에 따라 같이 변한다.
+뷰는 삽입,삭제,갱신 연산에 많은 제약이 따른다 <-다이나믹 set으로 고칠 수 있다.
+
+create view Vorders as (select ~ from where) 뷰 생성
+create view 뷰이름 as (select 문) <- 뷰이름의 새로운 가상 테이블 생성
+
+create or replace view 뷰이름 as select <- 뷰 수정(없다면 생성하고 있다면 교체해라)
+
+drop view 뷰이름
 ```
-
-
+```mysql
+create view 뷰이름A as (
+SELECT FROM 구문);
+```
+```mysql
+create or replace view 뷰이름 as select ()
+```
+```mysql
+drop view 뷰이름 
+```
