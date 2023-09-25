@@ -202,6 +202,73 @@ drop view 뷰이름
 ```
 InnoDB <- mysql이나 mariaDB에서 데이터베이스를 관리하는 저장 엔진
 .frm 파일 < - 데이터베이스 스키마 구조 저장
-.myd 파일 <- log파일, 복구파일
+.myd 파일 <- data 파일
 .myi 파일 <- index 정보
+
+데이터파일과 인덱스파일이 구분됨
+
+ACID : 원자성, 일관성, 독립성, 지속성
+
+가장 많이 사용되는 저장장치 : 하드디스크
+하드디스크는 원형의 플레이트로 구성, 플레이트는 논리적으로 트랙과 섹터로 나뉨
+
+rpm : Revolutions per minute : 모터에 의해서 분당 회전하는 속도
+latency time : 데이터를 읽을 때 엑세스 암이 이동하는 시간
+transfer time : 주기억장치로 읽어오는 시간
+
+엑세스시간 access time : 탐색시간 seek time < -엑세스 헤드를 트랙에 이동시키는 시간 접근하는시간
+
+seek time -> latency time -> data transfrer time(데이터를 메모리에 읽어들이는 시간)
+
+access time = seek time + latency time + transfer time 엑세스 시간
 ```
+## 23.09.25 MySQL Physical & Logical Architecture
+```
+client connector : ODBC, JDBC, Python, PHP, .NET 플러그인 방식 mySQL server로 연결하는 역할을 한다.
+
+server <- Query Cache,
+데이터를 생성하고 가져오는 것을 수행
+
+mysqld: MySQL Server daemon program <- 실행되고 있는 프로그램
+멀티 스레드 프로세스 : 여러 개의 세션을 함께 처리(연결 작업 등등)
+데이터베이스에 연결하는 여러 사용자들의 Connection을 관리해주는 역할
+Connection Management
+
+Query Cache < 쿼리가 중복된 내용이라면 client는 다른 client에게 더 빠르게 쿼리
+결과를 받을 수 있다.
+
+제일 하단에 storage Engine이 존재 InnoDB : 완전한 ACID를 만족시키는 엔진이다.
+
+NDB (For MySQL Cluster) 여러 개의 Cluster를 분배해서 여러 개의 멀티플 mysqld를 사용한다.
+
+MyISAM : 완전한 트랜직션 저장 엔진이 아니다. 파일, 키, 메타 데이터, 쿼리 캐시 등을 사용한다.
+
+MEMORY : 완전한 트랜직션 저장 엔진이 아니다. 
+
+ARCHIVE : 완전한 트랜직션 저장 엔진이 아니다. 많은 양의 데이터를 단순히 저장하는 형태
+
+CSV : 콤마로 분리된 값의 포맷 형태
+
+Parser : SQL Syntax를 검사해서 SQL이 실행되는 동안 SQL_ID를 관리한다.
+
+Table Metadata cache <- 자주 쓰는 Metadata는 Cache에 가져다 놓고 쓴다.
+
+Storage Engine : 실제 물리적인 데이터(저장장치에 실제로 저장된데이터)
+파일 관리와 위치를 MySQL 컴포넌트가 저장
+
+Optimizer : 효율적인 쿼리 실행 계획을 만들어준다. query plan
+어떻게 쿼리를 실행하는 것이 좋은 지를 만들어 준다.
+
+key cache : MyISAM에 index table의 캐시를 가져다 놓고 쓴다. 불러오는 시간, 찾는 시간 단축
+
+엔진을 선택하는 기준 : 도메인 구축할 때 분야를 보고 판단
+
+MySQL 파일 저장위치알려주는 명령어 : show variables like 'datadir';
+
+데이터 파일(ibdata) : 확장자는 .ibd, 테이블과 인덱스로 구성 
+
+폼파일(frm File) : 테이블을 구성하는 필드, 데이터 타입에 대한 정보 저장
+데이터베이스 구조 등의 변경사항이 있을 때 자동으로 업데이트 됨
+
+```
+
