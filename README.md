@@ -301,7 +301,7 @@ double write buffer : page를 저장장치에 읽는데 innoDB 메모리에 있�
 REDO logs : 문제가 생겼을 때 복구
 temporary tablespace : 작업 중 커밋을 하지 못한 임시 파일들을 저장
 
-
+DB Buffer cache LRU 알고리즘 사용 가장 사용빈도가 높은 데이터 저장 관리
 
 
 
