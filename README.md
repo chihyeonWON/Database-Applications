@@ -269,6 +269,45 @@ MySQL 파일 저장위치알려주는 명령어 : show variables like 'datadir';
 
 폼파일(frm File) : 테이블을 구성하는 필드, 데이터 타입에 대한 정보 저장
 데이터베이스 구조 등의 변경사항이 있을 때 자동으로 업데이트 됨
+```
+## 23.10.05
+```
+connection thread : 멀티 스레드
+query cache : 자주 쓰는 쿼리를 저장
+parser : 단어들을 쪼개서 문법을 체크하고 생성한 쿼리의 sql_id를 만든다 (번역기)
+optimizer : sql 쿼리를 실행
+storage engine: 데이터 파일에서 데이터에 접근한다.
+
+innoDB : plugin 방식 여러가지 형태의 저장장치를 선택할 수 있는 데 그 중 innoDB를 가장 많이 사용한다 트랜직션 처리가 잦은 업무에 사용한다.
+
+Tablespace :innodb의 인덱스방식의 table저장구조이다. 메모리를 가져와서 테이블을 보여준다.
+innoDB의 작업공간은 Buffer pool 데이터와 인덱스 등 특정페이지를 저장한다.
+log files db서버가 중지되거나 했을 때 log파일을 둔다. 복구를 위해서
+
+check point : 백업 구간. 이정표milestone
+undo : 작업을 취소한다. 되돌린다.
+redo : 재실행
+commit : 물리 저장장치에 저장한다.
+
+이노db tablespace 구조 멀티플 데이터파일을 저장하는 논리적인 구조
+
+change buffer : innodb buffer pool을 찾는 장치
+adaptive hash index : 메모리의 컨텐츠의 index를 저장하는 장치
+
+system tablespace : innoDB 저장하는 장치
+General tablespace : 공유하는 tablespace가 멀티 테이블 데이터를 저장한다.
+
+double write buffer : page를 저장장치에 읽는데 innoDB 메모리에 있는 내용을 그대로 저장한다.
+REDO logs : 문제가 생겼을 때 복구
+temporary tablespace : 작업 중 커밋을 하지 못한 임시 파일들을 저장
+
+
+
+
+
+
+
+
 
 ```
 
