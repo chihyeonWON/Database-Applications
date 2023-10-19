@@ -432,7 +432,5 @@ Analyze TABLE Book;
 
 인덱스 ix_Book을 삭제하시오
 DROP INDEX ix_Book;
-
 ```
-
 
