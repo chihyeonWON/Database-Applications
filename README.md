@@ -374,20 +374,65 @@ root에서 3개
 데이터의 수정, 삭제 등의 변경이 발생하면 인덱스의 재구성이 필요
 
 B+ tree : B 트리의 확장으로 중복 키들 가능, 연결리스트를 사용
+```
 
 
 
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/b464da7c-39b7-456e-aec1-24044e873a85)
+```
+B-tree의 밸런스 트리
 
+2가지 타입의 블록(노드)
+1. 탐색을 위한 가지 블록
+2. 값을 저장하기 위한 리프 블록
+-연속된 키 값의 레코드에 대한 rowid 저장
+레코드들에 대한 시작점의 주소
 
+RID(Row Id)에 의해 실제 데이터의 저장위치를 찾음
 
+rowid를 가지고 테이블이 시작하는 곳을 찾음
 
+인덱스의 종류: 클러스터 인덱스, 보조인덱스
 
+시스템에서 primary key 기본적으로 만들어지는 인덱스 -> 클러스터 인덱스 영어사전
 
+두 번째 인덱스만들때 create index -> 보조 인덱스 UNIQUE 2차인덱스-> 중복가능
 
+보조 인덱스를 검색하여 기본키 속성 값을 찾은 다음 클러스터 인덱스로 가서 해당 레코드를 찾음
 
+루트노드 - 리프노드 인덱스 블록에서 ROWID(블럭번호-블럭내의 행 순번)를 가지고 데이터를 찾음
 
+클러스터인덱스와 보조인덱스 동시사용 -> 보조인덱스 - 클러스터 인덱스 - 테이블
 
+보조인덱스를 통해서 1/2 찾고 그 키값으로 클러스터 인덱스에서 테이블을 찾음
 
+인덱스의 생성
 
+where절, 조인에 자주 사용되는 속성
+속성이 지속적으로 업데이트되는 경우 사용하지 않음
+속성의 선택도(중복도)가 낮을 때 유리함 중복되지 않을 때 좋다.
+단일 테이블에 인덱스가 많으면 속도가 느려질 수 있음
+
+Create index ix_Book On Book(bookname); ix_Book이름의 인덱스를 Book테이블의 bookname 속성을 대상으로 만들어라
+Create index ix_Book2 On Book(publisher, price); ix_Book2이름의 인덱스를 Book테이블의 publisher, price 속성을 대상으로 만들어라
+
+show index from book; book 테이블의 인덱스를 보여준다.
+sql쿼리가 테이블의 속성값을 어떻게 찾아갔는지 보려면 query - explain Current Statement
+
+인덱스의 재구성
+
+키가 새로 들어오면 인덱스를 재구성해야한다.
+analyze table 명령을 사용
+
+기억장소에서 fragmentation 단편화 발생
+삭제된 레코드의 인덱스 값이 비어있는 현상<- 성능저하 야기, 인덱스 재구성하여 조각화 최소화
+
+Book 테이블의 인덱스를 최적화하시오
+Analyze TABLE Book;
+
+인덱스 ix_Book을 삭제하시오
+DROP INDEX ix_Book;
 
 ```
+
+
