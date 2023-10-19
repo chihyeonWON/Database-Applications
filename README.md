@@ -433,4 +433,113 @@ Analyze TABLE Book;
 인덱스 ix_Book을 삭제하시오
 DROP INDEX ix_Book;
 ```
+## 5장 데이터베이스 프로그래밍
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/29200dbe-5656-44ed-a467-5e9015142b0f)    
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/b24f1b52-ea4a-4913-823b-0a7ca242b01b)
+
+```
+1. DBMS에 데이터를 정의
+2. 저장된 데이터를 읽어옴
+3. 데이터를 변경하는 프로그램을 작성
+
+일반 프로그래밍과의 차이 : 데이터베이스 언어인 SQL을 포함한다
+
+SQL 전용 프로그램(Shell, SQL Workbench) -> DBMS -> DB
+프로그래머가 응용프로그램(SQL + 자바) -> DBMS -> DB 삽입 프로그래밍(임베디드 프로그래밍)
+
+DB에 접속하기 위해서는 응용프로그램과 DBMS를 연결해주는 JDBS, CRI 등의
+미들웨어 인터페이스가 필요함
+
+1. SQL 전용 언어를 사용하는 방법 : SQL 자체 기능을 확장, MySQL, Oracle
+변수, 제어, 입출력 등의 기능을 추가한 새로운 언어를 사용
+
+MySQL : Stored Program
+Oracle : PL(Programming Language)
+SQL Sever : T-SQL (Transaction)언어
+
+2. 일반 프로그래밍 언어에 SQL을 삽입하여 사용하는 방법
+
+자바, C, C++ 등 일반 프로그래밍 언어에 SQL 삽입하여 사용
+
+3. 웹 프로그래밍 언어에 sql을 삽입하여 사용하는 방법
+
+JSP, ASP, PHP 등 웹 스크립트 언어인 경우
+
+4GL (4th Generation Language) : 4세대 언어
+GUI 기반 소프트웨어 개발 도구
+델파이, 파워 빌더, 비쥬얼 베이직
+데이터베이스 관리 기능 + 비주얼 프로그래밍 기능 
+
+저장프로그램
+
+서버사이드, 절차적 언어 MySQL의 SQL 확장 버전
+프로그램 논리를 프로시저로 구현- 객체 형태로 사용
+```
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/ce3bd976-d2fd-4339-abd5-dd719731a207)
+```
+MySQL의 SQL 전용 언어 : 데이터베이스 응용프로그램 작성에 사용, 함수와 비슷한 개념
+프로그램의 논리를 프로시저로 저장해서 함수처럼 사용
+
+구성 : 테이블, Views, Stored Procedures, 트리거, Functions, 클러스터 인덱스
+
+sql 문에 프로그래밍 기능 추가 <- 변수, 제어, 입출력 등
+
+작성 도구 : MySQL Workbench에서 바로 작성하고 컴파일하고 결과 실행
+cmd, powershell 등에서도 가능
+
+DB Object : Tables, Views, Stored Procedures, Functions
+
+저장객체 : 작업 순서가 정해진 독립된 프로그램 수행 단위
+
+Stored Routine 저장 루틴 : 반복적으로 작업을 수행하기 위해 만들어놓은 루틴
+- Procedure, Function
+
+Procedure <- 리턴값이없이 결과를 보여주기만 하면 된다.
+Function <- 여러 값을 받아서 하나의 리턴값을 준다.
+
+Trigger: Insert, delete, update 등 데이터 변경문 실행 시 자동으로 실행되는 프로시저
+
+Event Scheduler : Analyze index 같이 인덱스를 최적화하고 정기적으로 실행하는 등의 이벤트를
+자동으로 일정 시간에 실행되게 해주는 것을 이벤트 스케줄러
+
+저장 프로그램을 만드는 문법 : create procedure name_of_SP[(파라미터 데이터타입1, 파라미터 데이터타입2)] 파라미터 호출되서 전달받는 매개변수
+
+변수가 먼저 나오고 데이터타입이 나오는 점이 다르다.
+```
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/9e98ffcb-e427-4e2e-84ea-7cde8e0b88ba)     
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/87df80f8-1662-452a-b76a-2497eff813dd)      
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/e44bb63f-2a83-407b-8f35-25906cdaf437)       
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/98274612-21ea-4375-8a2f-d7274596f755)       
+```
+Begin ~ END; <- 프로그램의 BODY 부분 선언(Declaration part)부분과 실행(Execution part)부분이 있다.
+데이터를 위한 메모리를 잡기 위해 선언 부분 먼저나오고 실행 부분이 그 후에 따라 나오는 형태
+
+delimiter 문장 마침표로 // 을 쓰겠다.
+
+call 을 사용하여 procedure를 실행할 수 있음
+
+sql+을 누르고 작성한 후에 실행하면 stored procedure에 저장됨
+call madang.dorepreat(1000);
+
+SET @x = 0; x 변수 선언하고 0 삽입
+REPEAT SET @x = @x + 1; x에 1더하고 x에 삽입
+UNTIL @x > p1
+END REPEAT; x가 p1보다 클 때까지하고 크면 반복 종료
+
+SET @x = 0; 선언부
+REPEAT ~ UNTIL ~ END REPEAT; 반복문 실행부
+
+매개변수(parameter) : p1 INT
+
+기본 MySQL 문장구문(delimeter) ;
+프로시저 끝과 문장구분기호 혼돈된다. 세미콜론으로 동일하기 때문
+문장구분기호를 시작할 때 delimeter // 로 쓰고 끝나고 다시 delimeter ; 세미콜론으로 반환
+
+mysql delimeter를 재정의 redefine
+
+재정의 : delimeter //
+실행 후 환원 : delimeter ;
+
+프로시저가 끝나면 END // delimeter ;
+```
 
