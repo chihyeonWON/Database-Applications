@@ -554,7 +554,23 @@ Insert를 사용하여 입력 가능
 
 workbench-stored procedure-create stored procedure-routine-apply
 
+delimeter {  } : 구문 종료 기호 설정
+begin end 저장프로그램 문 블록화, 중첩 가능 begin { sql 문 } end
+if else -> 조건 검사 결과에 따라 문장을 선택적으로 수행
 
+InsertOrUpdate() 프로시저 15번에 스포츠즐거움을 삽입 가격 25000
+15번에 값이있다면 값을 20000으로 Update
+
+결과 반환 프로시저 안에 sql select avg(price) 프로시저 매개변수에
+OUT 키워드를 작성하면 출력 매개변수가된다
+
+into로 저장된 평균값 AverageVal을 OUT AverageVal에 의해 리턴된다.
+
+call AveragePrice(@myValue) myValue 변수에 리턴 값을 저장한다.
+select @myValue -> 리턴 값 출력
+
+ 
+INTO 변수에 값을 저장
 
 
 
