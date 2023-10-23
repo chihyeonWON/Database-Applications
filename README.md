@@ -542,4 +542,23 @@ mysql delimeter를 재정의 redefine
 
 프로시저가 끝나면 END // delimeter ;
 ```
+## 23.10.23
+```
+삽입 작업 프로시저
+
+Insert를 사용하여 입력 가능
+
+프로시저 사용 삽입 장점
+복잡한 조건의 삽입 작업 수행 가능 (인자값만 바꿔서 수행할 수도 있음)
+저장해두었다가 필요할 때마다 호출하여 사용 가능
+
+workbench-stored procedure-create stored procedure-routine-apply
+
+
+
+
+
+
+
+```
 
