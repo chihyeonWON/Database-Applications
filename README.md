@@ -576,6 +576,105 @@ INTO 변수에 값을 저장
 
 일련의데이터에 순차덕으로 접근할때 버튼역할을 하는 것
 
+매개변수를 사용하는 경우 값을 결정하고 데이터 엑세스를 시작한다.
+커서의 위치의 데이터를 검색한다 
+
+반복 종료 후 커서를 풀어놓는다.
+
+sql안에서 커서라는 오브젝트를 사용하고 버림
+
+커서를 선언하고 만들어진 커서를 오픈
+데이터를 결과집합에서 한번의 한행씩 읽어들인다.
+
+커서 사용 프로시저 단계를 서술하라
+declare, open, fetch close
+
+지역변수 선언 myinterest integer default 0.0
+
+endofRow boolean default false
+
+declare 커서이름 cursor for 결과집합sql
+
+cursor not found set endofRow 커서가 발견되지않으면 다읽고나서 끝이면 endofRow true면 종료
+
+여기까지가 커서 정의 그 다음 커서 오픋
+
+cursor open
+
+cursor_loop 돌아올 레이블 loop반복키워드
+
+커서가 가리키고 있는 것을 price에 넣음
+
+끝이라면 커서루프에서 leave
+아니라면 30000만 보다 높은 조건에 맞는 saleprice값을 price에 넣는다.
+
+30000원 이상인것은 수익률을 10퍼센트 3000원을 먹고 30000원보다 작은것은 이익률을 5퍼센트로 하는 조건문
+
+커서를 이용한 조건에따른 이익률을 저장
+
+close cursor 커서종료
+
+커서종료하고 전체 누적시킨 결과값을 출력 select
+
+fetch로 가져온 컬럼의 수만큼 변수를 선언해줘여한다.
+
+select 두개컬럼이면 변수를 두개 선언해야한다.
+
+프로시저안에서 값을 into로 넣을수있었는데
+커서프러시저안의 select into를 써서 값을 넣으면 안된다.커서 프로시저는 결과집합 select를 사용할 것
+
+declare handler 핸들러를 설정할 때 continue handler는 하나씩 계속 볼수있음
+ condition value 어떤살태일때 계속하고 에러코드를 뱉을것인지 결정
+
+codition value에 not found error등 사용가능
+
+declare handler not found set으로 썻었음
+
+loop 반복문을 구현해준다. 끝내기위해서는 leave를 쓰면된다. function의  return과 같은 역할
+
+트리거trigger 데이터베이스 테이블에 insert delete update 같은 트랜직션이 발생했을 때 취해야할 액션을 트리거에 정의하면 자동으로 알려주거나 고쳐줌
+
+트리거는 프로시저등과같이 저장 프로그램
+테이블과 관련이있는 이름지어진 데이터 오브젝트
+자동적으로 실행
+
+응용프로그램안에서 테이블 t에 update insert delete 될때 update trigger
+
+trigger도 프로시저처럼 begin end로 구성
+사전작업할때
+
+트리거 수행작업 insert update할때 default 값구성 사전작업, 데이터 제약조건 설정, sql 뷰의 수정, 참조무결성
+
+잘못된 명령을 수행하기전에 관찰하고 오류를 미리체크 그 후에 체크해서 받아들일것인지 체킹
+
+invalid transaction읾때
+
+mysql before와 after 키워드를 제공 instead of는 제공 x
+
+before는 변경문 실행 전에 트리거 발생
+after는 변경문 실행 후에 트리거 발생
+
+definer는 트리거를 만든사람을 정의하고 권한 체크를 위함
+
+local에서는 안써도됨 서버에서는 체크해야함
+트리거를 만들 권한이 있는지 체크해야함
+
+trigger 생성문
+
+trigger 이름, time(before,after), 이벤트종류(insert delete update)
+
+on 테이블이름
+
+for each row : 커서처럼 한 행마다 처리
+트리거order(follow, precedes)
+트리거 여러개중에 순서를 정해줌 이거는 생략가능함
+follow 다음트리거 precedes 이전에 새로운트리거를 수행할지
+other 트리거가
+
+
+
+
+
 
 ```
 
