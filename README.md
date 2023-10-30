@@ -671,10 +671,31 @@ for each row : 커서처럼 한 행마다 처리
 follow 다음트리거 precedes 이전에 새로운트리거를 수행할지
 other 트리거가
 
+set global log_bin_trust_function_creators ture면 트리거나 함수를 생성할 수 있게됨
+저장 함수 생성 가능 여부 검토
+
+create trigger 트리거 이름 (트리거 이름은 의미있는 걸로)
+
+after insert on book for each row <- 트리거의 특성
+for each row 각 행마다 book 테이블에 대해서 insert가 발생한 후에 트리거가 발생하도록 헤드에 써줌
+트리거의 이름과 특성을 정의한다.
+
+트리거가 수행할 내용은 begin end에 써준다.
+
+book 테이블로부터 값을 전달받는 부분 new 투플 값 지정자
+```
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/ee5f8706-d010-4870-b794-f53d7bf656d9)
+```
+book 테이블의 value가 new로 연결되어 하나씩 전달이 됨
+
+book 테이블에 14번이 들어감 -> after 트리거 insert after book
+insert 된 후에 after trigger가 실행됨
+속성값들이 new. 속성값들에 들어감 book_log 테이블에 값이 들어감
+
+
 
 
 
 
 
 ```
-
