@@ -726,12 +726,27 @@ set myinterest = price * 0.1;
 set myinterest := price * 0.05;
 
 사용자 정의 함수를 select에서도 쓸 수 있고 call x
+```
+## L2 2-5 데이터베이스 프로그래밍
+#### JDBC
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/1b987fbe-695e-40bf-a633-63ea491f503d)
+```
+클라이언트 사이드 프로그램
+자바응용이DB에접속가능하게하는자바API -> JDBC
 
+java.sql : JDBC를 통해서 어플리케이션에 연결하는 방법을 소개함 API
+javax.sql : server-side data source
 
+ODBC : 데이터베이스에는 독립적, OS에는 종속적  Object-C Pointer로 구성
+JDBC : OS와 데이터베이스에 독립적이다. 자바로 만들어서 다른 곳에서 쓸 수 있음 JAVA Pointer를 사용x
 
+JDBC의 세가지 일을 서술하라.
 
+1. 데이터베이스 서버에 연결한다.
+2. SQL문장을 보낸다.
+3. 결과를 처리한다.
 
-
+ 
 
 
 
