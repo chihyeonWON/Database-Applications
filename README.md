@@ -692,6 +692,48 @@ book 테이블에 14번이 들어감 -> after 트리거 insert after book
 insert 된 후에 after trigger가 실행됨
 속성값들이 new. 속성값들에 들어감 book_log 테이블에 값이 들어감
 
+트리거는 특정 테이블 아래에 있다. 특정 테이블 객체에 소속됨
+```
+## 사용자 정의 함수
+```
+만들어진 함수를 사용하려면 call 명령어를 실행해서 수행한다.
+
+sql문장은 call이 아니라 select from where select 뒤에 쓰면 됨
+
+입력된 값을 가공하여 결과 값을 반환
+
+프로시저 : call 명령
+
+사용자 정의 함수 : select문 또는 프로시저에서 호출 결과값을 반드시 제공하고
+스칼라함수가 일반적(단일값 반환)
+
+create function statement return문  데이터 타입을 선언, 파라미터 in파라미터
+함수의 파라미터는 값을 전달받는 in밖에 없음 안써줘도 되고
+
+create function 함수이름(매개변수~) RETURNS type 나열
+
+블록 안에는 return s가 없음
+
+int sum <- 일반적인 형태
+sum returns int <- 사용자 정의 함수 형태
+
+declaration : int x;
+definition : int x=0; declaration and initialized
+
+function의 end; //
+
+set myinterest = price * 0.1;
+set myinterest := price * 0.05;
+
+사용자 정의 함수를 select에서도 쓸 수 있고 call x
+
+
+
+
+
+
+
+
 
 
 
