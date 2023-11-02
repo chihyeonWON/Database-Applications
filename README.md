@@ -746,13 +746,22 @@ JDBC의 세가지 일을 서술하라.
 2. SQL문장을 보낸다.
 3. 결과를 처리한다.
 
- 
+DriverManager : JDBC 드라이버 관리, DB 연결 설정, 데이터베이스의 연결을 설정하는 JDBC API의 클래스
 
+Driver : 데이터베이스 서버와의 통신을 처리, DriverManager 객체를 사용
 
+Connection : 데이터베이스에 연결하기 위한 모든 메서드가 있는 인터페이스
+createStatement() method Statement Object 생성 : db에 sql 문장을 보내기 위함
 
+Statement : 개체를 사용하여 데이터베이스에 sql을 제출, sql문을 실행하고 질의 결과를 반환
 
+ResultSet : 질의 결과 집합 <- 커서 객체를 활용, statement 개체를 사용하여 sql 쿼리를 실행
+이 객체는 데이터를 이동할 수 있는 반복자 역할
 
-
-
-
+ResultSet MetaData : 데이터에 대한 데이터(메타 데이터) 유형 및 속성에 대한 정보를 가져오는 데 사용
 ```
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/b6376f0c-a316-4f6c-a1f5-20b2a61c749e)
+![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/f105a2da-0e82-4a0c-a5eb-2c32608e8832)
+
+
+
