@@ -762,6 +762,70 @@ ResultSet MetaData : 데이터에 대한 데이터(메타 데이터) 유형 및 
 ```
 ![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/b6376f0c-a316-4f6c-a1f5-20b2a61c749e)
 ![image](https://github.com/chihyunwon/Database-Applications/assets/58906858/f105a2da-0e82-4a0c-a5eb-2c32608e8832)
+## 11월 9일
+#### 정규화 Normalization
+```
+정규화(Normalization) 그리고 이상현상(Anomalies)
+이상현상을 해결하기 위해서 정규화를 한다.
+
+이상현상의 개념 : 잘못된 데이터베이스 설계
+
+중복 데이터를 갖는 테이블(Duplication) -> 이상현상을 야기
+중복(Redundancy) 데이터의 중복
+
+삭제 이상(deletion annomaly)
+-> 투플 삭제 시 같이 저장된 다른 정보까지 연쇄적으로 삭제되는 현상
+연쇄삭제(triggered deletion) 문제 발생
+
+삽입 이상(insertion anomaly)
+튜플 삽입 시 특정 속성에 해당하는 값이 없어 NULL 값을 입력해야 하는 현상 -> null 값 문제 발생
+
+수정 이상(update anomaly)
+불일치의 문제 : 튜플 수정 시 중복된 데이터의 일부만 수정되어 데이터의 불일치 문제가 일어나는 현상
+```
+![image](https://github.com/mr-won/Database-Applications/assets/58906858/b8c49585-674d-470a-b53c-d817fae649c2)
+```
+스포츠 경영학과를 삭제하려고 하는 데 학생정보도 같이 삭제됨 -> triggered deletion 연쇄 삭제현상
+박지성 학생 주소를 변경 - 불일치 문제
+박세리 학생을 넣는데 강좌이름, 강의실 속성의 데이터 값이 NULL이기 때문에 Null 문제 발생
+
+course code가 없어져야 할 때 코스와 관련은 되어있찌만 교수와 관련된 정보까지 같이 삭제된다.
+코스와 교수 정보가 혼합되어 있을 때 삭제 했을 때 값이 같이 삭제된다. 연쇄 삭제
+같은 레코드에 혼재되어있기 때문이다.
+연쇄 삭제가 발생한다.
+
+과목 코드를 넣는데 과목 코드가 없을 때 NULL 문제 삽입 문제가 발생한다.
+
+519번 사원의 주소를 바꿀 때 한 데이터만 수정되기 때문에 불일치 문제가 발생한다.
+
+SELECT 문은 이상현상을 확인할 수 없음(검색문은 이상현상 없음)
+SQL 조회(RETRIEVAL) 질의문 실습 -> 이상현상없음(I,U,D Insert, update, delete)
+
+C 과목을 듣는 학생조회하려고 하는데 200번을 삭제했을 때 c 교과목 정보가 없어짐
+
+질의 7-3에서 조건을 두 개걸어서 sid가 100이고 class fortran인 것만 고치기 때문에
+하나는 15000원 20000원이 되므로 불일치 현상이 발생한다
+
+정규화 방법 : 함수 종속성
+
+함수의 특징 중 종속성 : 입력값에 대해서 하나의 결과를 낸다.
+이상현상을 제거해주고 좋은 데이터베이스를 생성해준다.
+
+테이블의 구조를 수정하는 방법 : 테이블을 분리한다.
+
+
+enroll테이블(수강id, 과목정보) price(과목정보, 가격)
 
 
 
+
+
+
+
+
+
+
+
+
+
+```
