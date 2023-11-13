@@ -1,5 +1,15 @@
 # Database-Applications
 컴퓨터공학과 데이터베이스 응용 정리입니다.
+
+## 중간고사 후기
+[잘못된 문제 링크3번](https://yenyen31.tistory.com/34?category=948723)
+```
+중간고사 결과가 나왔고 2.5점짜리 객관식 2문제와 서술형4점, 5점 나가서 86점이 나왔다.
+물론 정확한 답을 알고자하는 내 노력이 부족한 탓이었던인지 인터넷에서 본 잘못된 답을 체크했다.
+다음번엔 공부할 때는 사실 여부를 정확하게 확인하면서 학습해야겠다..
+```
+
+
 ![image](https://github.com/wonchihyeon/Database-Applications/assets/58906858/9e47b566-ed8d-4142-b4da-1492c0be9565)
 ```
 mysql/sql 서버는 from 없이가능
