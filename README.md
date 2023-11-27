@@ -1097,6 +1097,151 @@ commit 부분완료<- 옛날에는 디스크에 써버리고 말았는데, 현�
 
 장점 -> dbms는 사용자에게 빠른 응답성을 보장하기 위해 부분완료를 하는 방법을 선택한다.
 
+begin transaction ~commit main()으로 시작 c
+데이터베이스에 저장된 데이터를 다룬다. c는 파일에 저장된 데이터를 다룬다.
+번역기는 dbms안에 있는 c에서는 컴파일러
+원자성, 일관성, 고립성, 지속성
+
+트랜잭션은 dbms안의 데이터를 다룬다.
+프로그램은 컴파일러가 파일에 있는 데이터를 다룬다.
+
+원자성 : 전부 수행되거나 전부 수행되지 않아야 한다. all or nothing
+일관성 : 트랜잭션을 수행하기 전이나 수행한 후나 데이터베이스는 항상 일관된 상태를
+유지해야 한다.
+고립성 : 수행 중인 트랜잭션에 다른 트랜직션이 끼어들어 변경 중인 데이터 값을
+훼손하는 일이 없어야 함
+지속성 : 수행을 성공적으로 완료한 트랜잭션은 변경한 데이터를 영구히 저장해야 함
+
+
+원자성 <- 시작했으면 commit으로 끝내야 한다
+start transaction 뒤에 select, insert, delete, update를 그룹으로 처리하고 마지막에 commit하면 끝
+트랜잭션의 특징을 정의
+
+commit 끝
+
+rollback 트랜잭션 전체 혹은 <savepoint> 까지 무효화 시킴
+rollback {to <savepoint>} 그냥 rollback<- 처음으로 savepoint는 트랜잭션 중간 중간의 시점에서 저장하는 데이터를
+따로따로 들고 있다.
+
+rollback {To a}
+savepoint a <- 복구용
+
+일관성 consistency
+
+a10 b10 에서 시작
+a에서 b계좌로 1만원을 보냈다.
+보내는 중에 a9 b10 a1만원이 실행 중인 상태가 있을 수 있다.
+a9 b11
+
+고립성 isolation
+
+데이터베이스는 공유가 목적 -> 여러 트랜잭션이 동시에 수행됨
+독립적으로 수행하는 것을 고립성
+동시성 제어 : 고립성을 유지하기 위해 변경 중인 임시 데이터를 다른 트랜잭션이 읽고 쓸 때
+제어가 필요함
+누가 데이터를 같이 쓰는지 모른다.
+
+동시성 제어의 방법으로 락킹이 있다.
+
+시간 t1에 대해서 트랜잭션이 동시에 발생할 수 있다.
+
+지속성 : 정상적으로 완료 혹은 부분완료한 데이터는 dbms가 책임지고 데이터베이스에 기록한다.
+
+부분완료->메모리에서 작업이 끝난 상태 -> 메모리 버퍼에 있는 내용을 디스크에 옮기는 작업(commit)
+
+부분완료에서 실패되면 작업이 취소된다. aborted
+
+지속성을 책임 -> commit
+
+트랜잭션과 dbms
+
+dbms는 원자성을 유지하기 위해서 recovery manager 회복관리자 프로그램을 실행시킴
+로그를 기록해뒀다가 로그를 실행
+
+원자성 : 동시성 제어, 회복
+일관성 : 무결성(sql문)
+고립성 : 동시성제어
+지속성 : 회복
+
+트랜잭션의 시작은 start transaction
+트랜잭션 끝 commit/ rollback
+
+set transaction은 트랜직션의 특성을 지정한다.
+transaction isolation, access mode, characteristic scope
+
+set [global/session] transaction global, session 트랜잭션 영향의 범위
+
+transaction_characteristic isolation level이 어떤 것이냐 isolation level의 종류
+level : 4가지 repeatable read 반복 읽기, read committed, read uncommitted, serializable(가장쌘거) 4가지 4가지가 있는 데 부작용이 있을 수 있다.
+
+access_mode : 2가지 {read write, read only }
+
+8_code01.sql
+
+start transaction
+insert into book values(99, '데이터베이스', '한빛', 25000);
+select bookname 'bookname1' FROM Book WHERE bookid=99;
+
+savepoint a; a위에 까지를 보관한다. bookname1에 데이터베이스라는 값이 들어가있음
+
+이후에 update 해서 데이터베이스 개론으로 책이름을 바꿈
+savepoint a에서는 데이터베이스
+savepoint b에서는 데이터베이스 개론
+
+update로 데이터베이스 개론 및 실습으로 고침
+
+savepoint c에서는 데이터베이스 개론 및 실습 메모리에 savepoint랑 데이터를 임시로 저장중
+
+rollback to b; 하면 데이터베이스 개론이 나온다.
+
+rollback to a; 하면 데이터베이스
+
+commit; 하면 최종적으로 데이터베이스로 저장됨
+
+그냥 rollback하면 데이터베이스가 나온다. 처음상태로 이
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
