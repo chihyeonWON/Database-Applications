@@ -2,7 +2,9 @@
 컴퓨터공학과 데이터베이스 응용 정리입니다.
 
 ## 종강
-![image](https://github.com/mr-won/Database-Applications/assets/58906858/851d50c1-cb4f-46ab-885c-2b9baafba869)
+![image](https://github.com/mr-won/Database-Applications/assets/58906858/1b5c16a5-2802-4be6-b52e-5b4248da09bd)
+
+
 ```
 SQL, DB 프로그래밍, 데이터 모델링, 정규화, 트랜잭션의 개념을 MySQL 데이터베이스 실습을 통해서 확인할 수 있었습니다.
 ```
